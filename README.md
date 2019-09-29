@@ -1,2 +1,0 @@
-# CurrencyConvert
-Created with CodeSandbox
