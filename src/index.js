@@ -1,9 +1,16 @@
-var http = require("http");
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
 //create a server object:
-http
-  .createServer(function(req, res) {
-    res.write("Hello World!"); //write a response to the client
-    res.end(); //end the response
-  })
-  .listen(8080); //the server object listens on port 8080
+app.use(express.static(__dirname));
+app.use(bodyParser.urlencoded({ extended: true }));
+    // parse application/json
+app.use(bodyParser.json());
+
+app.get('/',(req, res) =>
+{
+	res.sendFile(__dirname + '/index.html');
+});
+
+app.listen(8080);
